@@ -1,20 +1,31 @@
 {
-  "name": "node-easy-notes-app",
+  "name": "node-api-sandbox",
   "version": "1.0.0",
-  "description": "Never miss a thing in Life. Take notes quickly. Organize and keep track of all your notes.",
+  "description": "Sandbox build on Node.JS",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [
-    "Express",
-    "RestAPI",
-    "MongoDB",
-    "Mongoose",
-    "Notes"
-  ],
-  "author": "callicoder",
+  "engines": {
+    "node": "12.1.0"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "public/*",
+      "views/*"
+    ],
+    "delay": "1500"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geenloop/node-api-sandbox"
+  },
+  "author": "GeenLoop",
   "license": "MIT",
+  "homepage": "https://github.com/geenloop/node-api-sandbox",
+  "devDependencies": {
+    "nodemon": "^1.12.5"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",

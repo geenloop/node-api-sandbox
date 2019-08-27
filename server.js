@@ -1,22 +1,24 @@
+// DEPENDICIES
 const express = require('express');
 const bodyParser = require('body-parser');
-
-// create express app
-const app = express();
-
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
-
-// parse application/json
-app.use(bodyParser.json())
-
-// Configuring the database
-const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise;
+// CONFIG
+const dbConfig = require('./config/database.config.js');
 
-// Connecting to the database
+// SET A WEB SERVER
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+// ROUTES
+require('./app/routes/note.routes.js')(app);
+// define a default ROUTE
+app.get('/', (req, res) => {
+    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+});
+
+// CONNECT TO DATABASE
+mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
 	useNewUrlParser: true
 }).then(() => {
@@ -26,14 +28,7 @@ mongoose.connect(dbConfig.url, {
     process.exit();
 });
 
-// define a simple route
-app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
-});
-
-require('./app/routes/note.routes.js')(app);
-
-// listen for requests
+// START SERVER
 app.listen(3000, () => {
     console.log("Server is listening on port 3000");
 });
