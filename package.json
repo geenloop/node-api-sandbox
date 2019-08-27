@@ -4,7 +4,7 @@
   "description": "Sandbox build on Node.JS",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "engines": {
     "node": "12.1.0"
@@ -29,6 +29,10 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "mongoose": "^5.2.8"
+    "express-oas-generator": "^1.0.9",
+    "mongoose": "^5.2.8",
+    "swagger-jsdoc": "^3.4.0",
+    "swagger-ui": "^3.23.6",
+    "swagger-ui-express": "^4.0.7"
   }
 }

@@ -1,3 +1,5 @@
+![demo](https://raw.githubusercontent.com/geenloop/node-api-sandbox/master/demo.png)
+
 # Restful CRUD API Application
 
 Build using Node.js, Express and MongoDB.
