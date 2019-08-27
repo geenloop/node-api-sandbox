@@ -1,0 +1,19 @@
+html(lang="en")
+    head
+        title="404"
+        meta(name="mobile-web-app-capable" content="yes")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="theme-color" content="#000")
+        link(rel="stylesheet", href="/styles/error404.css")
+    body()
+        div#particles-js
+            canvas.particles-js-canvas-el(style="width:100%;height:100%")
+
+        div.container
+            div.text
+                div.error 404
+                div.info=error
+
+        script(src="/scripts/particles.min.js")
+        script(src="/scripts/error404.js")
+

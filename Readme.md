@@ -9,6 +9,7 @@ Build using Node.js, Express and MongoDB. Forked and edited for my needs and bet
 
 ```bash
 npm install
+bower install
 ```
 
 
@@ -18,7 +19,8 @@ npm install
 npm run start
 ```
 
-That's all and server runs on:  
+That's all simple as that and server runs on:  
+
 <http://localhost:3000>
 
 

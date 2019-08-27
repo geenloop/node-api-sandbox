@@ -12,7 +12,8 @@
   "nodemonConfig": {
     "ignore": [
       "public/*",
-      "views/*"
+      "views/*",
+      "upload/*"
     ],
     "delay": "1500"
   },
@@ -27,12 +28,20 @@
     "nodemon": "^1.12.5"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
+    "archiver": "~1.0.0",
+    "body-parser": "^1.19.0",
     "express": "^4.16.3",
+    "express-fileupload": "^1.1.5",
     "express-oas-generator": "^1.0.9",
+    "fs": "0.0.1-security",
+    "fs-extra": "^8.1.0",
+    "mongodb": "~2.1.18",
     "mongoose": "^5.2.8",
-    "swagger-jsdoc": "^3.4.0",
-    "swagger-ui": "^3.23.6",
-    "swagger-ui-express": "^4.0.7"
+    "nodemailer": "^6.3.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.4",
+    "unzip-stream": "^0.3.0",
+    "unzipper": "^0.10.4",
+    "winston": "^3.2.1"
   }
 }

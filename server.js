@@ -1,8 +1,12 @@
 // DEPENDICIES
+const fs = require('fs');
+const path = require('path');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const expressOasGenerator = require("express-oas-generator");
+const fileUpload = require('express-fileupload');
+//const multer = require('multer');
 
 // CONFIG
 const dbConfig = require("./config/database.config.js");
@@ -12,11 +16,27 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+//SET MULTER
+//app.use(multer());
+
+// SET FILE UPLOADER
+app.use(fileUpload());
+
 // ROUTES
 require("./app/routes/note.routes.js")(app);
+require("./app/routes/backup.routes.js")(app);
 // define a default ROUTE to redirect to API-DOC
 app.get("/", (req, res) => {
-    res.redirect('/api-docs');
+    fs.readFile('package.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        var configData = JSON.parse(data);
+        res.render(
+            'index',
+            {
+                appName: configData.name,
+                appVersion: configData.name + " v" + configData.version,
+            });
+    });
 });
 
 // SWAGGER API DOC
@@ -34,13 +54,20 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dbConfig.url, {
 	useNewUrlParser: true
 }).then(() => {
-    console.log("Successfully connected to the database");    
+    console.log("Database connected");
 }).catch(err => {
     console.log("Could not connect to the database. Exiting now...", err);
     process.exit();
 });
 
+// SET PUG template rendering
+app.set('view engine', 'pug');
+
+// SET public and upload folder for backup/restore
+app.use(express.static(path.join(__dirname, 'public')));
+app.use("/uploads", express.static(path.join(__dirname, 'upload')));
+
 // START SERVER
 app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+    console.log("Server running");
 });

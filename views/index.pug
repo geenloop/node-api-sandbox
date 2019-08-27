@@ -1,0 +1,36 @@
+mixin links(names)
+    each name in names
+        link(rel="stylesheet", type="text/css", href=name)
+mixin scripts(names)
+    each name in names
+        script(type="text/javascript", src=name)
+mixin scriptsBowerAngular(names)
+    each name in names
+        script(type="text/javascript", src="/bower_components/"+name+"/"+name+".min.js")
+html(lang="en")
+    head
+        title=appName
+        meta(name="mobile-web-app-capable" content="yes")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="theme-color" content="#000")
+
+        +links([
+            "/bower_components/angular-material/angular-material.min.css",
+            "/styles/main.css"
+        ])
+
+        +scriptsBowerAngular([
+            "angular",
+            "angular-aria",
+            "angular-messages",
+            "angular-animate",
+            "angular-material",
+            "angular-route"
+        ])
+
+        +scripts([
+            "/scripts/app.js",
+            "/scripts/index/component.js"
+        ])
+    body(ng-app="ngApp")
+        md-content(ng-view layout="column" layout-fill="" layout-align="center center")
