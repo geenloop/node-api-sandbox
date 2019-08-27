@@ -1,8 +1,9 @@
-![demo](https://raw.githubusercontent.com/geenloop/node-api-sandbox/master/demo.png)
 
 ## Restful CRUD API Application
 
 Build using Node.js, Express and MongoDB. Forked and edited for my needs and better undertand for the other.
+
+![demo](https://raw.githubusercontent.com/geenloop/node-api-sandbox/master/demo.png)
 
 # 1. Install
 
@@ -10,16 +11,18 @@ Build using Node.js, Express and MongoDB. Forked and edited for my needs and bet
 npm install
 ```
 
-## 2. Run
+
+# 2. Run
 
 ```bash
-node server.js
+npm run start
 ```
 
 That's all and server runs on:  
 <http://localhost:3000>
 
-## 4. Test (by [Postman](https://www.getpostman.com/downloads/))
+
+# 3. Test (by [Postman](https://www.getpostman.com/downloads/))
 
 ![demo](https://raw.githubusercontent.com/geenloop/node-api-sandbox/master/test_put.png)
 ![demo](https://raw.githubusercontent.com/geenloop/node-api-sandbox/master/test_get.png)
